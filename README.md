@@ -1,2 +1,2 @@
 # alx-backend
-backend specifications + RESTAPI
+backend specifications, RESTAPI
