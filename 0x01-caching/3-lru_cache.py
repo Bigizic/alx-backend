@@ -6,8 +6,8 @@ from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
-    """A LRUCache class inheriting from BaseCaching and
-    proceeds to define certain methods
+    """Implementation of the LEAST RECENTLY USED(LRU) Caching algorithm
+    @param (BaseCaching): <BaseCaching class>
     """
 
     def __init__(self, dicts={}, count=0):

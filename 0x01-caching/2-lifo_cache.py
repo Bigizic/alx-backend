@@ -6,8 +6,8 @@ from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """A LIFOCache class inheriting from BaseCaching and
-    proceeds to define certain methods
+    """Implementation of the LAST IN FIRST OUT(LIFO) Caching algorithm
+    @param (BaseCaching): <BaseCaching class>
     """
 
     def __init__(self):
