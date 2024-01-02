@@ -6,7 +6,7 @@ from base_caching import BaseCaching
 
 
 class LFUCache(BaseCaching):
-    """Implementation of LEAST FREQUENCY USED ITEM Caching algorithm
+    """Implementation of LEAST FREQUENCY USED ITEM(LFU) Caching algorithm
     @param(BaseCaching): <BaseCaching class>
     """
 
@@ -15,7 +15,6 @@ class LFUCache(BaseCaching):
         """
         self.count = 0
         self.access_freq = {}
-        self.get_counter = None
         super().__init__()
 
     def put(self, key, item):
@@ -26,7 +25,6 @@ class LFUCache(BaseCaching):
             pass
 
         if key and item not in [None]:
-            # self.cache_data[key] = item
             if key not in list(self.cache_data.keys()):
                 if len(self.cache_data) < BaseCaching.MAX_ITEMS:
                     self.cache_data[key] = item
@@ -51,6 +49,5 @@ class LFUCache(BaseCaching):
             for k, v in self.cache_data.items():
                 if k == key:
                     self.access_freq[key] = 2
-                    self.get_counter = key
                     return v
         return None

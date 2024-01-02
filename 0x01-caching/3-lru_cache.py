@@ -10,10 +10,10 @@ class LRUCache(BaseCaching):
     @param (BaseCaching): <BaseCaching class>
     """
 
-    def __init__(self, dicts={}, count=0):
+    def __init__(self, cache_freq={}, count=0):
         """Constructor
         """
-        self.dicts = dicts
+        self.cache_freq = cache_freq
         self.count = count
         super().__init__()
 
@@ -27,14 +27,14 @@ class LRUCache(BaseCaching):
         if key and item not in [None]:
             self.cache_data[key] = item
 
-        self.dicts[key] = self.count
+        self.cache_freq[key] = self.count
         self.count += 1
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            dicts_min = min(self.dicts.values())
-            get_key = [k for k, v in self.dicts.items() if v == dicts_min]
+            lru = min(self.cache_freq.values())
+            get_key = [k for k, v in self.cache_freq.items() if v == lru]
             self.cache_data.pop(get_key[0])
-            self.dicts.pop(get_key[0])
+            self.cache_freq.pop(get_key[0])
             print(f"DISCARD: {get_key[0]}")
 
     def get(self, key):
@@ -43,8 +43,8 @@ class LRUCache(BaseCaching):
         if key:
             for k, v in self.cache_data.items():
                 if k == key:
-                    tmp = max(self.dicts.values())
-                    self.dicts[key] = tmp + 1
+                    tmp = max(self.cache_freq.values())
+                    self.cache_freq[key] = tmp + 1
                     self.count += 1
                     return v
         return None

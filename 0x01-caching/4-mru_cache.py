@@ -6,14 +6,14 @@ from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):
-    """Implementation of the MOST RECENTLY USED Caching algorithm
+    """Implementation of the MOST RECENTLY USED(MRU) Caching algorithm
     @param (BaseCaching): <BaseCaching class>
     """
 
-    def __init__(self, count=0, dicts={}):
+    def __init__(self, count=0, cache_freq={}):
         """Constructor
         """
-        self.dicts = dicts
+        self.cache_freq = cache_freq
         self.count = count
         self.get_counter = None
         super().__init__()
@@ -27,20 +27,20 @@ class MRUCache(BaseCaching):
 
         if key and item not in [None]:
             self.cache_data[key] = item
-            self.dicts[key] = self.count + 1
+            self.cache_freq[key] = self.count + 1
             self.count += 1
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             if self.get_counter:
                 self.cache_data.pop(self.get_counter)
-                self.dicts.pop(self.get_counter)
+                self.cache_freq.pop(self.get_counter)
                 print(f"DISCARD: {self.get_counter}")
                 self.get_counter = None
             else:
-                dicts_m = list(self.dicts.keys())
-                self.cache_data.pop(dicts_m[-2])
-                self.dicts.pop(dicts_m[-2])
-                print(f"DISCARD: {dicts_m[-2]}")
+                mru = list(self.cache_freq.keys())
+                self.cache_data.pop(mru[-2])
+                self.cache_freq.pop(mru[-2])
+                print(f"DISCARD: {mru[-2]}")
 
     def get(self, key):
         """Retrives the value of a key from self.cache_data
@@ -48,8 +48,8 @@ class MRUCache(BaseCaching):
         if key:
             for k, v in self.cache_data.items():
                 if k == key:
-                    tmp = max(self.dicts.values())
-                    self.dicts[key] = tmp + 1
+                    tmp = max(self.cache_freq.values())
+                    self.cache_freq[key] = tmp + 1
                     self.get_counter = key
                     return v
         return None

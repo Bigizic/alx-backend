@@ -25,11 +25,11 @@ class LIFOCache(BaseCaching):
         if key and item not in [None]:
             self.cache_data[key] = item
 
-        lists = [x for x, v in self.cache_data.items()]
+        key_items = [x for x, v in self.cache_data.items()]
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            self.cache_data.pop(lists[-2])
-            print(f"DISCARD: {lists[-2]}")
+            self.cache_data.pop(key_items[-2])
+            print(f"DISCARD: {key_items[-2]}")
 
     def get(self, key):
         """Retrives the value of a key from self.cache_data
