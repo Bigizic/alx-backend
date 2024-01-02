@@ -16,8 +16,8 @@ class BasicCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """Assigns to the dictionary from BaseCaching the item value of the
-        key
+        """Assigns to the dictionary from BaseCaching the 'item' value of the
+        key 'key'
         """
         if key or item in [None]:
             pass
