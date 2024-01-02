@@ -19,10 +19,10 @@ class BasicCache(BaseCaching):
         """Assigns to the dictionary from BaseCaching the 'item' value of the
         key 'key'
         """
-        if key or item in [None]:
+        if key and item not in [None]:
+            self.cache_data[key] = item
+        else:
             pass
-
-        self.cache_data[key] = item
 
     def get(self, key):
         """Retrives the value of a key from self.cache_data
