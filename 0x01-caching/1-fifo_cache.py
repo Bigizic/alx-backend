@@ -18,7 +18,7 @@ class FIFOCache(BaseCaching):
         """Assigns to the dictionary from BaseCaching the 'item' value of the
         key 'key'
         """
-        if key == None or item == None:
+        if key is None or item is None:
             pass
 
         if key and item not in [None]:
