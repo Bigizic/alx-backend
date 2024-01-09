@@ -21,3 +21,13 @@ class Config():
 
 app.config.from_object(Config)
 babel = Babel(app)
+
+@app.route('/')
+def hello_world():
+    """Implementation of the flask app
+    """
+    return render_template('1-index.html')
+
+
+if __name__ == '__main__':
+    app.run()
