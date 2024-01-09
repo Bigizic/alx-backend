@@ -44,10 +44,11 @@ $ pybabel init -i messages.pot -d translations -l fr
 
 Then edit files translations/[en|fr]/LC_MESSAGES/messages.po to provide the correct value for each message ID for each language. Use the following translations:
 
-|----||----||----|
-| msgid || English || French |
-| home_title || "Welcome to Holberton" || "Bienvenue chez Holberton" |
-| home_header || "Hello world!" || "Bonjour monde!" |
+
+| msgid | English | French |
+| ---- | ---- | ---- |
+| home_title | "Welcome to Holberton" | "Bienvenue chez Holberton" |
+| home_header | "Hello world!" | "Bonjour monde!" |
 
 Then compile your dictionaries with
 
@@ -89,10 +90,11 @@ Define a before_request function and use the app.before_request decorator to mak
 In your HTML template, if a user is logged in, in a paragraph tag, display a welcome message otherwise display a default message as shown in the table below.
 
 
-|----||----||----|
-| msgid || English || French |
-| logged_in_as || "You are logged in as %(username)s." || "Vous êtes connecté en tant que %(username)s." |
-| not_logged_in || "You are not logged in." || "Vous n'êtes pas connecté." |
+
+| msgid | English | French |
+| ---- | ---- | ---- |
+| logged_in_as | "You are logged in as %(username)s." | "Vous êtes connecté en tant que %(username)s." |
+| not_logged_in | "You are not logged in." | "Vous n'êtes pas connecté." |
 
 
 Visiting http://127.0.0.1:5000/ in your browser should display this:
@@ -143,9 +145,10 @@ Jan 21, 2020, 5:55:39 AM or 21 janv. 2020 à 05:56:28
 
 Use the following translations
 
-|----||----||----|
-| msgid || English || French |
-| current_time_is || "The current time is %(current_time)s." || "Nous sommes le %(current_time)s." |
+
+| msgid | English | French |
+| ---- | ---- | ---- |
+| current_time_is | "The current time is %(current_time)s." | "Nous sommes le %(current_time)s." |
 
 Displaying the time in French looks like this:
 
