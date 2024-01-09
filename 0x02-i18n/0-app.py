@@ -13,7 +13,7 @@ app.url_map.strict_slashes = False
 def hello_world():
     """A route that simply outputs welcome to Holberton
     """
-    return render_template("index.html")
+    return render_template("0-index.html")
 
 
 if __name__ == '__main__':
