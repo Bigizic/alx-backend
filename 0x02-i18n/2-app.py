@@ -1,9 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 """A flask route that uses flask Babel to configure en to fr
 """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel
 
 
 app = Flask(__name__)
@@ -25,6 +29,8 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
+    """Retreives the locale for a web page from request
+    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
