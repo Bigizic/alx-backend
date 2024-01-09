@@ -22,6 +22,7 @@ class Config():
 app.config.from_object(Config)
 babel = Babel(app)
 
+
 @app.route('/')
 def hello_world():
     """Implementation of the flask app
