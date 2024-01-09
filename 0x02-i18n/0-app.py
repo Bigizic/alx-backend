@@ -2,13 +2,14 @@
 """A basic flask app with a single route
 """
 
-from flask import Blueprint, Flask, render_template
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-@app.route('/', methods=["GET"])
+
+@app.route('/')
 def hello_world():
     """A route that simply outputs welcome to Holberton
     """
@@ -16,4 +17,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0')
+    app.run()
