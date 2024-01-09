@@ -1,8 +1,4 @@
-#!/usr/bin/env python3@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+#!/usr/bin/env python3
 """A flask route that uses flask Babel to configure en to fr
 """
 
