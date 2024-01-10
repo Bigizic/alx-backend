@@ -6,10 +6,6 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-app = Flask(__name__)
-app.url_map.strict_slashes = False
-
-
 class Config():
     """Implementation of the config class that has a language class
     attribute equal to ["en", "fr"]
@@ -19,6 +15,8 @@ class Config():
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+app = Flask(__name__)
+app.url_map.strict_slashes = False
 app.config.from_object(Config)
 babel = Babel(app)
 
