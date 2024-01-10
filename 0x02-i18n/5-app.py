@@ -36,6 +36,16 @@ def before_request() -> None:
     g.user = user
 
 
+def get_user() -> Union[Dict, None]:
+    """@param (u_id): <int>
+    Returns a user dictionary else None
+    """
+    u_id = request.args.get('login_as')
+    if u_id:
+        return u_id.get(int(u_id))
+    return None
+
+
 @babel.localeselector
 def get_locale() -> str:
     """Retreives the locale for a web page from request
@@ -52,16 +62,6 @@ def hello_world() -> str:
     """Implementation of the flask app
     """
     return render_template('5-index.html')
-
-
-def get_user() -> Union[Dict, None]:
-    """@param (u_id): <int>
-    Returns a user dictionary else None
-    """
-    u_id = request.args.get('login_as')
-    if u_id:
-        return u_id.get(int(u_id))
-    return None
 
 
 if __name__ == '__main__':
