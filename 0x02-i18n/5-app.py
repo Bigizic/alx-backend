@@ -47,6 +47,7 @@ def get_user() -> Union[Dict, None]:
         return users.get(int(u_id))
     return None
 
+
 @babel.localeselector
 def get_locale() -> str:
     """Retreives the locale for a web page from request
