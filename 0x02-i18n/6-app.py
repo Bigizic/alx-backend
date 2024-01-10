@@ -57,7 +57,7 @@ def get_locale() -> str:
 def hello_world() -> str:
     """Implementation of the flask app
     """
-    return render_template('4-index.html')
+    return render_template('6-index.html')
 
 
 def get_user() -> Union[Dict, None]:

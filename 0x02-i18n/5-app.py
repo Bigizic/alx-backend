@@ -7,16 +7,6 @@ from flask_babel import Babel
 from typing import Union, Dict
 
 
-app = Flask(__name__)
-app.url_map.strict_slashes = False
-users = {
-    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
-    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
-    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
-    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
-}
-
-
 class Config():
     """Implementation of the config class that has a language class
     attribute equal to ["en", "fr"]
@@ -26,8 +16,16 @@ class Config():
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+app = Flask(__name__)
+app.url_map.strict_slashes = False
 app.config.from_object(Config)
 babel = Babel(app)
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
 
 
 @app.before_request
@@ -53,7 +51,7 @@ def get_locale() -> str:
 def hello_world() -> str:
     """Implementation of the flask app
     """
-    return render_template('4-index.html')
+    return render_template('5-index.html')
 
 
 def get_user() -> Union[Dict, None]:
