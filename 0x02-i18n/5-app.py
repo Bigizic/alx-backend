@@ -2,9 +2,12 @@
 """A flask route that uses flask Babel to configure en to fr
 """
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from typing import Union, Dict
+
+app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
 class Config():
@@ -16,10 +19,9 @@ class Config():
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-app = Flask(__name__)
-app.url_map.strict_slashes = False
 app.config.from_object(Config)
 babel = Babel(app)
+
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -42,11 +44,10 @@ def get_user() -> Union[Dict, None]:
     """
     u_id = request.args.get('login_as')
     if u_id:
-        return u_id.get(int(u_id))
+        return users.get(int(u_id))
     return None
 
 
-@babel.localeselector
 def get_locale() -> str:
     """Retreives the locale for a web page from request
     """
@@ -57,12 +58,17 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
+babel.init_app(app, locale_selector=get_locale)
+
+
 @app.route('/')
 def hello_world() -> str:
     """Implementation of the flask app
     """
-    return render_template('5-index.html')
+    g_user = g.user
+    user_n = g_user.get('name') if g_user else ''
+    return render_template('5-index.html', user_name=user_n)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)

@@ -1,13 +1,14 @@
 # English translations for PROJECT.
 # Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR olalekanisaac75@gmail.com, 2024.
+# Isaac Ajibola olalekanisaac75@gmail.com, 2024.
 #
-
+msgid ""
+msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: olalekanisaac75@gmail.com\n"
-"POT-Creation-Date: 2024-01-10 00:58+0000\n"
-"PO-Revision-Date: 2024-01-10 00:59+0000\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-01-10 12:34+0000\n"
+"PO-Revision-Date: 2024-01-10 12:34+0000\n"
 "Last-Translator: Isaac Ajibola olalekanisaac75@gmail.com\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -28,3 +29,4 @@ msgstr "You are logged in as %(username)s."
 
 msgid "not_logged_in"
 msgstr "You are not logged in."
+
