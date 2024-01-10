@@ -3,8 +3,7 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR olalekanisaac75@gmail.com, 2024.
 #
-msgid ""
-msgstr ""
+
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: olalekanisaac75@gmail.com\n"
 "POT-Creation-Date: 2024-01-10 00:58+0000\n"
