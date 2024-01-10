@@ -2,7 +2,7 @@
 """A flask route that uses flask Babel to configure en to fr
 """
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from typing import Union, Dict
 
@@ -38,6 +38,16 @@ def before_request() -> None:
     g.user = user
 
 
+def get_user() -> Union[Dict, None]:
+    """@param (u_id): <int>
+    Returns a user dictionary else None
+    """
+    u_id = request.args.get('login_as')
+    if u_id:
+        return users.get(int(u_id))
+    return None
+
+
 @babel.localeselector
 def get_locale() -> str:
     """Retreives the locale for a web page from request
@@ -45,8 +55,10 @@ def get_locale() -> str:
     if 'locale' in request.args:
         if request.args.get('locale') in app.config['LANGUAGES']:
             return request.args.get('locale')
+
     if g.user and g.user['locale'] in app.config["LANGUAGES"]:
         return g.user['locale']
+
     if request.headers.get('locale', '') in app.config["LANGUAGES"]:
         return request.headers.get('locale', '')
 
@@ -57,17 +69,8 @@ def get_locale() -> str:
 def hello_world() -> str:
     """Implementation of the flask app
     """
-    return render_template('6-index.html')
-
-
-def get_user() -> Union[Dict, None]:
-    """@param (u_id): <int>
-    Returns a user dictionary else None
-    """
-    u_id = request.args.get('login_as')
-    if u_id:
-        return u_id.get(int(u_id))
-    return None
+    user_n = g.user.get('name') if g.user is not None else ''
+    return render_template('6-index.html', user_name=user_n)
 
 
 if __name__ == '__main__':
