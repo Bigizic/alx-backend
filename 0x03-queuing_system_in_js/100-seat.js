@@ -30,7 +30,6 @@ app.get('/available_seats', async (req, res) => {
     const availableSeats = await getAsync('available_seats');
     res.status(200).json({ availableSeats: parseInt(availableSeats) || 0 });
   } catch (error) {
-    console.error('Error:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 }).get('/reserve_seat', async (req, res) => {
@@ -78,7 +77,6 @@ app.get('/available_seats', async (req, res) => {
     });
     res.status(200).json({ status: 'Queue processing' });
   } catch (error) {
-    console.error('Error:', error);
     res.status(500).json({ status: 'Error processing queue' });
   }
 });
