@@ -66,4 +66,4 @@ jobs.forEach((jobInfo, index) => {
       console.log('Notification job', kueJob.id, `${progress}% complete`);
     });
   kueJob.save();
-})
+});

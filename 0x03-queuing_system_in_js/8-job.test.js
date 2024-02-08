@@ -31,12 +31,12 @@ describe('createPushNotificationsJobs', () => {
     const jobInfos = [
       {
         phoneNumber: '44556677889',
-        message: 'Use the code 1982 to verify your account',
+        message: 'Use the code 1982 to verify your account'
       },
       {
         phoneNumber: '98877665544',
-        message: 'Use the code 1738 to verify your account',
-      },
+        message: 'Use the code 1738 to verify your account'
+      }
     ];
     createPushNotificationsJobs(jobInfos, QUEUE);
     expect(QUEUE.testMode.jobs.length).to.equal(2);
